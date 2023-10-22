@@ -29,5 +29,26 @@ namespace CirclesApp
         {
 
         }
-    }
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+            TeacherWindow teacherWindow = new TeacherWindow();  
+            teacherWindow.Show();
+            this.Close();
+        }
+
+		private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			TeacherWindow teacherWindow = new TeacherWindow();
+			teacherWindow.Show();
+			this.Close();
+		}
+
+		private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			TeacherWindow teacherWindow = new TeacherWindow();
+			teacherWindow.Show();
+			this.Close();
+		}
+	}
 }

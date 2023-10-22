@@ -23,7 +23,24 @@ namespace CirclesApp
         public TeacherWindow()
         {
             InitializeComponent();
-            TeacherWindowFrame.NavigationService.Navigate(new MenuPage());
+            TeacherWindowFrame.NavigationService.Navigate(new MainPage());
         }
-    }
+
+		private void TeacherWindowFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+		{
+
+		}
+
+		private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			TeacherWindowFrame.NavigationService.Navigate(new MainPage());
+
+		}
+
+		private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
+		{
+			TeacherWindowFrame.NavigationService.Navigate(new CirclesPage());
+
+		}
+	}
 }

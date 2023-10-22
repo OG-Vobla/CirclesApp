@@ -55,9 +55,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CirclesPage.xaml.cs">
+      <DependentUpon>CirclesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CircleWindow.xaml.cs">
+      <DependentUpon>CircleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TeacherWindow.xaml.cs">
       <DependentUpon>TeacherWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CirclesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CircleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,6 +133,78 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Rectangle 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Rectangle 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Group 27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Group 26 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Rectangle 2 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Group 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Group 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Кнопка входа %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Кнопка входа-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Кнопка входа-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Кнопка входа-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Кнопка входа-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Кнопка входа-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ываыа.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Кнопка входа.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Group 28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Group 2 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="asdfasfa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fthfthft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sefesfsefsd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="asdasdasd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="66_01_Floral_seamless_patternt_155 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hgfhfgh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dfgdfgfd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fdghfghf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

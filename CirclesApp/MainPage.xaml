@@ -1,0 +1,36 @@
+﻿<Page x:Class="CirclesApp.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CirclesApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="642"
+      Title="MainPage">
+
+    <Grid>
+        <Image Source="/Group 2 (1).png" Width="800" Margin="-0,0,0,0"/>
+        <Image Margin="413,0,54,340" Width="120" Height="29" Source="/Кнопка входа-1.png" Stretch="Fill" MouseDown="Image_MouseDown_2"/>
+        <Image Margin="233,0,233,260" Width="120" Height="29" Source="/Кнопка входа-2.png" Stretch="Fill" MouseDown="Image_MouseDown_4"/>
+        <Image Margin="232,0,234,340" Width="120" Height="29" Source="/Кнопка входа-3.png" Stretch="Fill" MouseDown="Image_MouseDown_1"/>
+        <Image Margin="54,0,414,260" Width="120" Height="29" Source="/Кнопка входа-4.png" Stretch="Fill" MouseDown="Image_MouseDown_3"/>
+        <Image Margin="414,0,54,260" Width="120" Height="29" Source="/Кнопка входа-5.png" Stretch="Fill" MouseDown="Image_MouseDown_5"/>
+        <Image Margin="54,0,414,340" Width="120" Height="29" Source="/ываыа.png" Stretch="Fill" MouseDown="Image_MouseDown"/>
+        <Image Margin="0,95,0,15" Width="650" Height="350" Source="/Group 28.png" Stretch="Fill"/>
+        <Image Margin="202,96,201,280" Width="120" Height="29" Source="/fthfthft.png" Stretch="Fill"/>
+        <Label x:Name="WeekDay" Width="119" Margin="0,95,0,0" HorizontalAlignment="Center" FontSize="17" Foreground="White" FontWeight="DemiBold"  Content="Понедельник"></Label>
+        <Label Width="189" Margin="0,155,340,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Время"></Label>
+        <Label Width="189" Margin="0,205,340,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="14:00-15:00"></Label>
+        <Label Width="189" Margin="0,255,340,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="16:10-17:10"></Label>
+        <Label Width="189" Margin="0,305,340,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="18:20-19:20"></Label>
+        <Label Width="189" Margin="0,155,-10,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
+        <Label Width="188" Margin="0,255,-10,-100" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
+        <Label Width="188" Margin="0,305,-10,-150" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
+        <Label Width="190" Margin="230,205,-10,-50" HorizontalAlignment="Left" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
+        <Label Width="189" Margin="0,155,-560,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Кабинет"></Label>
+        <Label Width="189" Margin="0,205,-560,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Кабинет"></Label>
+        <Label Width="189" Margin="0,255,-560,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Кабинет"></Label>
+        <Label Width="189" Margin="0,305,-560,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Кабинет"></Label>
+
+    </Grid>
+</Page>

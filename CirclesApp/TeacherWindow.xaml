@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CirclesApp"
         mc:Ignorable="d"
-        Title="TeacherWindow" Height="450" Width="800">
-    <Grid>
-        <Frame x:Name="TeacherWindowFrame" Content="Frame" Background="Black" Margin="158,0,0,0"/>
+        Title="TeacherWindow" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,0">
+        <Frame x:Name="TeacherWindowFrame" Content="Frame"  Margin="149,0,0,0" Navigated="TeacherWindowFrame_Navigated"  NavigationUIVisibility="Hidden">
+
+        </Frame>
+        <Image Margin="0,0,600,0"  Source="/Rectangle 2 (1).png" Stretch="Fill"/>
+        <Image Margin="-10,0,650,350" Width="110" Height="35" Source="/Group 1.png" Stretch="Fill"/>
+        <Image Margin="10,0,650,148" Source="/Кнопка входа (1).png" Stretch="Fill" Width="120" Height="29" MouseDown="Image_MouseDown_1"/>
+        <Image Margin="10,0,650,224" Source="/Кнопка входа.png" Width="120" Height="29" Stretch="Fill" MouseDown="Image_MouseDown"/>
     </Grid>
 </Window>
