@@ -28,5 +28,11 @@ namespace CirclesApp
 		{
 
         }
+
+        private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+			StudentsWindow studentsWindow = new StudentsWindow();
+			studentsWindow.Show();
+        }
     }
 }

@@ -1,27 +1,24 @@
-﻿<Window x:Class="CirclesApp.CircleWindow"
+﻿<Window x:Class="CirclesApp.StudentsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CirclesApp"
         mc:Ignorable="d"
-        Title="CircleWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="StudentsWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Image Source="/66_01_Floral_seamless_patternt_155 1.png" Stretch="Fill"/>
-        <Image Source="/sefsfsef.png" Stretch="Fill" Height="37" Width="287" Margin="257,381,256,6" MouseDown="Image_MouseDown_1"/>
         <Image Margin="0,-366,0,0" Height="80" Source="/hgfhfgh.png" Stretch="Fill"/>
-        <Label Width="189"  Height="50" Margin="0,-380,0,0" HorizontalAlignment="Center" FontSize="33" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
-        <Label Width="188" Height="40" Margin="0,59,0,335" HorizontalAlignment="Center" FontSize="27" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
+        <Label Width="189" Margin="0,-5,0,0" HorizontalAlignment="Center" FontSize="33" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
 
-        <ScrollViewer  Margin="0,102,0,62" Height="270" CanContentScroll="True">
+        <ScrollViewer  Margin="0,90,0,0" Height="320" CanContentScroll="True">
             <StackPanel>
                 <Grid Margin="0,10,0,0">
                     <Image Margin="0,0,0,0" Height="50" Width="600"  Source="/dfgdfgfd.png" Stretch="Fill"/>
-                    <Image Margin="0,0,-530,0" Height="40" Width="40" Source="/fdghfghf.png" Stretch="Fill" MouseDown="Image_MouseDown"/>
+                    <Image Margin="0,0,-530,0" Height="40" Width="40" Source="/kabwbfkwwe.png" Stretch="Fill"/>
                     <Label Width="189" Margin="-380,0,0,0" HorizontalAlignment="Center" FontSize="27" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
                 </Grid>
             </StackPanel>
-
         </ScrollViewer>
     </Grid>
 </Window>
