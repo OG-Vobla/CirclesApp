@@ -8,10 +8,10 @@
         Title="CircleWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Image Source="/66_01_Floral_seamless_patternt_155 1.png" Stretch="Fill"/>
-        <Image Source="/sefsfsef.png" Stretch="Fill" Height="37" Width="287" Margin="257,381,256,6" MouseDown="Image_MouseDown_1"/>
+        <Image Source="/sefsfsef.png" Stretch="Fill" Height="37" Width="287" Margin="0,371,0,6" MouseDown="Image_MouseDown_1"/>
         <Image Margin="0,-366,0,0" Height="80" Source="/hgfhfgh.png" Stretch="Fill"/>
         <Label Width="189"  Height="50" Margin="0,-380,0,0" HorizontalAlignment="Center" FontSize="33" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
-        <Label Width="188" Height="40" Margin="0,59,0,335" HorizontalAlignment="Center" FontSize="27" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
+        <Label Width="188" Height="40" Margin="0,39,0,335" HorizontalAlignment="Center" FontSize="27" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
 
         <ScrollViewer  Margin="0,102,0,62" Height="270" CanContentScroll="True">
             <StackPanel>
