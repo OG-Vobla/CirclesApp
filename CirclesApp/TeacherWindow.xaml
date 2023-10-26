@@ -11,8 +11,9 @@
 
         </Frame>
         <Image Margin="0,0,600,0"  Source="/Rectangle 2 (1).png" Stretch="Fill"/>
+        <Label x:Name="TicherName" Width="149" Margin="5,65,0,0" HorizontalAlignment="Left" FontSize="15" Foreground="#4B4C4E" FontWeight="DemiBold"  Content=""/>
         <Image Margin="-10,0,650,350" Width="110" Height="35" Source="/Group 1.png" Stretch="Fill"/>
-        <Image Margin="10,0,650,148" Source="/Кнопка входа (1).png" Stretch="Fill" Width="120" Height="29" MouseDown="Image_MouseDown_1"/>
-        <Image Margin="10,0,650,224" Source="/Кнопка входа.png" Width="120" Height="29" Stretch="Fill" MouseDown="Image_MouseDown"/>
+        <Image Margin="0,0,640,85" Source="/Кнопка входа (1).png" Stretch="Fill" Width="120" Height="29" MouseDown="Image_MouseDown_1"/>
+        <Image Margin="0,0,640,155" Source="/Кнопка входа.png" Width="120" Height="29" Stretch="Fill" MouseDown="Image_MouseDown"/>
     </Grid>
 </Window>

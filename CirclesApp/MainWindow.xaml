@@ -52,8 +52,8 @@
         <Image Grid.Column="1" Margin="158,7,63,7" Grid.Row="6" Source="/Button Icon.png" Stretch="Fill" MouseDown="Image_MouseDown"/>
         <Image Margin="17,2,10,0" Grid.Row="4" Source="/sefesfsefsd.png" Stretch="Fill" Grid.Column="1"/>
         <Image Margin="17,1,10,1" Grid.Row="2" Source="/sefesfsefsd.png" Stretch="Fill" Grid.Column="1"/>
-        <TextBox  FocusVisualStyle="{x:Null}" BorderThickness="0"  Grid.Column="1" HorizontalAlignment="Left" Margin="28,5,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="208" Height="34" BorderBrush="{x:Null}" TextChanged="TextBox_TextChanged" FontSize="25" Foreground="#FF969696" Background="{x:Null}" FontWeight="SemiBold"/>
-        <TextBox  FocusVisualStyle="{x:Null}" BorderThickness="0"  Grid.Column="1" HorizontalAlignment="Left" Margin="28,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="208" Height="34" BorderBrush="{x:Null}" TextChanged="TextBox_TextChanged" FontSize="25" Foreground="#FF969696" Background="{x:Null}" FontWeight="SemiBold"/>
+        <TextBox x:Name="Password" FocusVisualStyle="{x:Null}" BorderThickness="0"  Grid.Column="1" HorizontalAlignment="Left" Margin="28,5,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" Width="208" Height="34" BorderBrush="{x:Null}" TextChanged="TextBox_TextChanged" FontSize="25" Foreground="#FF969696" Background="{x:Null}" FontWeight="SemiBold"/>
+        <TextBox x:Name="Login" FocusVisualStyle="{x:Null}" BorderThickness="0"  Grid.Column="1" HorizontalAlignment="Left" Margin="28,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="208" Height="34" BorderBrush="{x:Null}" TextChanged="TextBox_TextChanged" FontSize="25" Foreground="#FF969696" Background="{x:Null}" FontWeight="SemiBold"/>
         <Image Grid.Column="1" Margin="53,74,68,17" Source="/Group 1.png" Stretch="Fill" Grid.RowSpan="2"/>
     </Grid>
 </Window>

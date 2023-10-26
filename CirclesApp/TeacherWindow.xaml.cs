@@ -24,6 +24,9 @@ namespace CirclesApp
         {
             InitializeComponent();
             TeacherWindowFrame.NavigationService.Navigate(new MainPage());
+			var TicherNames = DbConectionClass.CirclesDBEntities.Employee.Where(x => x.Id_employee == DbConectionClass.user.Id_employee).FirstOrDefault();
+
+            TicherName.Content = TicherNames.Surname + " " + TicherNames.Name;
         }
 
 		private void TeacherWindowFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)

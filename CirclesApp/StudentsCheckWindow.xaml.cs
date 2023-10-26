@@ -15,40 +15,35 @@ using System.Windows.Shapes;
 
 namespace CirclesApp
 {
-	/// <summary>
-	/// Логика взаимодействия для CircleWindow.xaml
-	/// </summary>
-	public partial class CircleWindow : Window
-	{
-		string circleName;
-		public CircleWindow(string CircleName)
-		{
-			circleName= CircleName;	
-			InitializeComponent();
-            CircleNameLabel.Content = circleName;
+    /// <summary>
+    /// Логика взаимодействия для StudentsCheckWindow.xaml
+    /// </summary>
+    public partial class StudentsCheckWindow : Window
+    {
+        string circleName;
+        public StudentsCheckWindow(string CircleName)
+        {
+            circleName = CircleName;
+            InitializeComponent();
             ShowCircles();
+
         }
-
-
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
+
             Grid circleGrid = FindParentGrid(sender as DependencyObject);
 
             if (circleGrid != null)
             {
                 Label label = FindChildLabel(circleGrid);
-                DbConectionClass.CirclesDBEntities.Student_coterie.Remove
-                    (DbConectionClass.CirclesDBEntities.Student_coterie.Where(x=> 
-                    (x.Student.Name + " " + x.Student.MiddleName + " " + x.Student.Surname) == label.Content && x.Coterie.Name == circleName).FirstOrDefault());
+                DbConectionClass.CirclesDBEntities.Student_coterie.Add(new Student_coterie() { Id_student = DbConectionClass.CirclesDBEntities.Student.Where(i => (i.Name + " " + i.MiddleName + " " + i.Surname) == label.Content).FirstOrDefault().Id_student, id_coterie = DbConectionClass.CirclesDBEntities.Coterie.Where(i => i.Name == circleName).FirstOrDefault().Id_Coterie });
                 DbConectionClass.CirclesDBEntities.SaveChanges();
-
                 while (CirclesStack.Children.Count != 1)
                 {
                     CirclesStack.Children.RemoveAt(1);
                 }
                 ShowCircles();
             }
-
         }
         private Grid FindParentGrid(DependencyObject child)
         {
@@ -84,18 +79,20 @@ namespace CirclesApp
         }
         private void ShowCircles()
         {
-            var employesCircles = DbConectionClass.CirclesDBEntities.Student_coterie.Where(x => x.Coterie.Name == circleName).ToList();
-            if (employesCircles.Count() != 0)
+
+            var students = DbConectionClass.CirclesDBEntities.Student.Where(x => DbConectionClass.CirclesDBEntities.Student_coterie.Where(i => x.Id_student == i.Id_student && i.Coterie.Name == circleName).FirstOrDefault() == null).ToList();
+            if (students.Count() != 0)
             {
-                foreach (var i in employesCircles)
+                foreach (var i in students)
                 {
+
                     Grid clonedCanvas = new Grid();
                     clonedCanvas.Margin = CircleGrid.Margin;
                     clonedCanvas.Width = CircleGrid.Width;
                     clonedCanvas.Height = CircleGrid.Height;
                     foreach (UIElement element in CircleGrid.Children)
                     {
-                        UIElement clonedElement = CloneElement(element, i.Student.Name + " " + i.Student.MiddleName + " "+ i.Student.Surname);
+                        UIElement clonedElement = CloneElement(element, i.Name + " " + i.MiddleName + " " + i.Surname);
                         clonedCanvas.Children.Add(clonedElement);
                     }
                     CirclesStack.Children.Add(clonedCanvas);
@@ -109,10 +106,13 @@ namespace CirclesApp
                 Button originalButton = (Button)element;
                 Button clonedButton = new Button();
 
+                // Копирование свойств из originalButton в clonedButton
                 clonedButton.Content = originalButton.Content;
                 clonedButton.Width = originalButton.Width;
                 clonedButton.Margin = originalButton.Margin;
                 clonedButton.Height = originalButton.Height;
+                // Копирование других свойств, если необходимо
+
                 return clonedButton;
             }
             else if (element is TextBlock)
@@ -120,27 +120,31 @@ namespace CirclesApp
                 TextBlock originalTextBlock = (TextBlock)element;
                 TextBlock clonedTextBlock = new TextBlock();
 
+                // Копирование свойств из originalTextBlock в clonedTextBlock
                 clonedTextBlock.Text = originalTextBlock.Text;
                 clonedTextBlock.Width = originalTextBlock.Width;
                 clonedTextBlock.Margin = originalTextBlock.Margin;
                 clonedTextBlock.Height = originalTextBlock.Height;
+                // Копирование других свойств, если необходимо
+
                 return clonedTextBlock;
             }
             else if (element is Image)
             {
                 Image originalTextBlock = (Image)element;
                 Image clonedTextBlock = new Image();
+
+                // Копирование свойств из originalTextBlock в clonedTextBlock
                 clonedTextBlock.Source = originalTextBlock.Source;
                 clonedTextBlock.Width = originalTextBlock.Width;
                 clonedTextBlock.Height = originalTextBlock.Height;
                 clonedTextBlock.Margin = originalTextBlock.Margin;
                 clonedTextBlock.Stretch = originalTextBlock.Stretch;
-                var str = originalTextBlock.Source.ToString();
-                
-                if (originalTextBlock.Source.ToString() == "pack://application:,,,/fdghfghf.png")
+                if (originalTextBlock.Source.ToString() == "pack://application:,,,/kabwbfkwwe.png")
                 {
                     clonedTextBlock.MouseDown += Image_MouseDown;
                 }
+                // Копирование других свойств, если необходимо
 
                 return clonedTextBlock;
             }
@@ -149,6 +153,7 @@ namespace CirclesApp
                 Label originalTextBlock = (Label)element;
                 Label clonedTextBlock = new Label();
 
+                // Копирование свойств из originalTextBlock в clonedTextBlock
                 clonedTextBlock.Content = CircleName;
                 clonedTextBlock.Width = originalTextBlock.Width;
                 clonedTextBlock.Height = originalTextBlock.Height;
@@ -156,20 +161,16 @@ namespace CirclesApp
                 clonedTextBlock.FontWeight = originalTextBlock.FontWeight;
                 clonedTextBlock.FontSize = originalTextBlock.FontSize;
                 clonedTextBlock.Foreground = originalTextBlock.Foreground;
+                clonedTextBlock.MouseDown += Image_MouseDown;
+                // Копирование других свойств, если необходимо
+
                 return clonedTextBlock;
             }
+            // Добавьте другие типы элементов, которые вы хотите поддерживать
+
+            // Если тип элемента не поддерживается, верните null или бросьте исключение
             return null;
         }
-
-        private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-			StudentsWindow studentsWindow = new StudentsWindow(circleName);
-			studentsWindow.ShowDialog();
-            while (CirclesStack.Children.Count != 1)
-            {
-                CirclesStack.Children.RemoveAt(1);
-            }
-            ShowCircles();
-        }
     }
+}
 }

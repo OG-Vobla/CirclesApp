@@ -1,0 +1,788 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище CirclesDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id_class" />
+          </Key>
+          <Property Name="Id_class" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number_cabinet" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Time_start" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Time_end" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Id_employee" Type="int" Nullable="false" />
+          <Property Name="Id_coterie" Type="int" />
+        </EntityType>
+        <EntityType Name="Coterie">
+          <Key>
+            <PropertyRef Name="Id_Coterie" />
+          </Key>
+          <Property Name="Id_Coterie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Max_amount" Type="int" Nullable="false" />
+          <Property Name="Hour_Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Coterie_employee">
+          <Key>
+            <PropertyRef Name="Id_coterie_student" />
+          </Key>
+          <Property Name="Id_coterie_student" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_coterie" Type="int" Nullable="false" />
+          <Property Name="Id_employee" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id_employee" />
+          </Key>
+          <Property Name="Id_employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id_role" />
+          </Key>
+          <Property Name="Id_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id_student" />
+          </Key>
+          <Property Name="Id_student" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date_of_birth" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student_Check">
+          <Key>
+            <PropertyRef Name="Id_student_scheck" />
+          </Key>
+          <Property Name="Id_student_scheck" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_student_coterie" Type="int" Nullable="false" />
+          <Property Name="Id_class" Type="int" Nullable="false" />
+          <Property Name="IsAttended" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student_coterie">
+          <Key>
+            <PropertyRef Name="Id_student_coterie" />
+          </Key>
+          <Property Name="Id_student_coterie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_student" Type="int" Nullable="false" />
+          <Property Name="id_coterie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_Users" />
+          </Key>
+          <Property Name="Id_Users" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_employee" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Class_Coterie">
+          <End Role="Coterie" Type="Self.Coterie" Multiplicity="0..1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coterie">
+              <PropertyRef Name="Id_Coterie" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Id_coterie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coterie_employee_Coterie">
+          <End Role="Coterie" Type="Self.Coterie" Multiplicity="1" />
+          <End Role="Coterie_employee" Type="Self.Coterie_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coterie">
+              <PropertyRef Name="Id_Coterie" />
+            </Principal>
+            <Dependent Role="Coterie_employee">
+              <PropertyRef Name="Id_coterie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coterie_employee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Coterie_employee" Type="Self.Coterie_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Coterie_employee">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id_role" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Check_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Student_Check" Type="Self.Student_Check" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id_class" />
+            </Principal>
+            <Dependent Role="Student_Check">
+              <PropertyRef Name="Id_class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Check_Student_coterie">
+          <End Role="Student_coterie" Type="Self.Student_coterie" Multiplicity="1" />
+          <End Role="Student_Check" Type="Self.Student_Check" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_coterie">
+              <PropertyRef Name="Id_student_coterie" />
+            </Principal>
+            <Dependent Role="Student_Check">
+              <PropertyRef Name="Id_student_coterie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_coterie_Coterie">
+          <End Role="Coterie" Type="Self.Coterie" Multiplicity="1" />
+          <End Role="Student_coterie" Type="Self.Student_coterie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coterie">
+              <PropertyRef Name="Id_Coterie" />
+            </Principal>
+            <Dependent Role="Student_coterie">
+              <PropertyRef Name="id_coterie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_coterie_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Student_coterie" Type="Self.Student_coterie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id_student" />
+            </Principal>
+            <Dependent Role="Student_coterie">
+              <PropertyRef Name="Id_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище CirclesDBModelContainer">
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coterie" EntityType="Self.Coterie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coterie_employee" EntityType="Self.Coterie_employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_Check" EntityType="Self.Student_Check" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_coterie" EntityType="Self.Student_coterie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Class_Coterie" Association="Self.FK_Class_Coterie">
+            <End Role="Coterie" EntitySet="Coterie" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Employee" Association="Self.FK_Class_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coterie_employee_Coterie" Association="Self.FK_Coterie_employee_Coterie">
+            <End Role="Coterie" EntitySet="Coterie" />
+            <End Role="Coterie_employee" EntitySet="Coterie_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coterie_employee_Employee" Association="Self.FK_Coterie_employee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Coterie_employee" EntitySet="Coterie_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Check_Class" Association="Self.FK_Student_Check_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student_Check" EntitySet="Student_Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Check_Student_coterie" Association="Self.FK_Student_Check_Student_coterie">
+            <End Role="Student_coterie" EntitySet="Student_coterie" />
+            <End Role="Student_Check" EntitySet="Student_Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_coterie_Coterie" Association="Self.FK_Student_coterie_Coterie">
+            <End Role="Coterie" EntitySet="Coterie" />
+            <End Role="Student_coterie" EntitySet="Student_coterie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_coterie_Student" Association="Self.FK_Student_coterie_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Student_coterie" EntitySet="Student_coterie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Employee" Association="Self.FK_Users_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CirclesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="Id_class" />
+          </Key>
+          <Property Name="Id_class" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number_cabinet" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Time_start" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Time_end" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Id_employee" Type="Int32" Nullable="false" />
+          <Property Name="Id_coterie" Type="Int32" />
+          <NavigationProperty Name="Coterie" Relationship="Self.FK_Class_Coterie" FromRole="Class" ToRole="Coterie" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Class_Employee" FromRole="Class" ToRole="Employee" />
+          <NavigationProperty Name="Student_Check" Relationship="Self.FK_Student_Check_Class" FromRole="Class" ToRole="Student_Check" />
+        </EntityType>
+        <EntityType Name="Coterie">
+          <Key>
+            <PropertyRef Name="Id_Coterie" />
+          </Key>
+          <Property Name="Id_Coterie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Max_amount" Type="Int32" Nullable="false" />
+          <Property Name="Hour_Amount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Class_Coterie" FromRole="Coterie" ToRole="Class" />
+          <NavigationProperty Name="Coterie_employee" Relationship="Self.FK_Coterie_employee_Coterie" FromRole="Coterie" ToRole="Coterie_employee" />
+          <NavigationProperty Name="Student_coterie" Relationship="Self.FK_Student_coterie_Coterie" FromRole="Coterie" ToRole="Student_coterie" />
+        </EntityType>
+        <EntityType Name="Coterie_employee">
+          <Key>
+            <PropertyRef Name="Id_coterie_student" />
+          </Key>
+          <Property Name="Id_coterie_student" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_coterie" Type="Int32" Nullable="false" />
+          <Property Name="Id_employee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coterie" Relationship="Self.FK_Coterie_employee_Coterie" FromRole="Coterie_employee" ToRole="Coterie" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Coterie_employee_Employee" FromRole="Coterie_employee" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id_employee" />
+          </Key>
+          <Property Name="Id_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Class_Employee" FromRole="Employee" ToRole="Class" />
+          <NavigationProperty Name="Coterie_employee" Relationship="Self.FK_Coterie_employee_Employee" FromRole="Employee" ToRole="Coterie_employee" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Employee" FromRole="Employee" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id_role" />
+          </Key>
+          <Property Name="Id_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id_student" />
+          </Key>
+          <Property Name="Id_student" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_birth" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Student_coterie" Relationship="Self.FK_Student_coterie_Student" FromRole="Student" ToRole="Student_coterie" />
+        </EntityType>
+        <EntityType Name="Student_Check">
+          <Key>
+            <PropertyRef Name="Id_student_scheck" />
+          </Key>
+          <Property Name="Id_student_scheck" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_student_coterie" Type="Int32" Nullable="false" />
+          <Property Name="Id_class" Type="Int32" Nullable="false" />
+          <Property Name="IsAttended" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Student_Check_Class" FromRole="Student_Check" ToRole="Class" />
+          <NavigationProperty Name="Student_coterie" Relationship="Self.FK_Student_Check_Student_coterie" FromRole="Student_Check" ToRole="Student_coterie" />
+        </EntityType>
+        <EntityType Name="Student_coterie">
+          <Key>
+            <PropertyRef Name="Id_student_coterie" />
+          </Key>
+          <Property Name="Id_student_coterie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_student" Type="Int32" Nullable="false" />
+          <Property Name="id_coterie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Coterie" Relationship="Self.FK_Student_coterie_Coterie" FromRole="Student_coterie" ToRole="Coterie" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_coterie_Student" FromRole="Student_coterie" ToRole="Student" />
+          <NavigationProperty Name="Student_Check" Relationship="Self.FK_Student_Check_Student_coterie" FromRole="Student_coterie" ToRole="Student_Check" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id_Users" />
+          </Key>
+          <Property Name="Id_Users" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_employee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Users_Employee" FromRole="Users" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Class_Coterie">
+          <End Role="Coterie" Type="Self.Coterie" Multiplicity="0..1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coterie">
+              <PropertyRef Name="Id_Coterie" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Id_coterie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Class" Type="Self.Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Check_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Student_Check" Type="Self.Student_Check" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="Id_class" />
+            </Principal>
+            <Dependent Role="Student_Check">
+              <PropertyRef Name="Id_class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coterie_employee_Coterie">
+          <End Role="Coterie" Type="Self.Coterie" Multiplicity="1" />
+          <End Role="Coterie_employee" Type="Self.Coterie_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coterie">
+              <PropertyRef Name="Id_Coterie" />
+            </Principal>
+            <Dependent Role="Coterie_employee">
+              <PropertyRef Name="Id_coterie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_coterie_Coterie">
+          <End Role="Coterie" Type="Self.Coterie" Multiplicity="1" />
+          <End Role="Student_coterie" Type="Self.Student_coterie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coterie">
+              <PropertyRef Name="Id_Coterie" />
+            </Principal>
+            <Dependent Role="Student_coterie">
+              <PropertyRef Name="id_coterie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Coterie_employee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Coterie_employee" Type="Self.Coterie_employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Coterie_employee">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id_role" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_coterie_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Student_coterie" Type="Self.Student_coterie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id_student" />
+            </Principal>
+            <Dependent Role="Student_coterie">
+              <PropertyRef Name="Id_student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Check_Student_coterie">
+          <End Role="Student_coterie" Type="Self.Student_coterie" Multiplicity="1" />
+          <End Role="Student_Check" Type="Self.Student_Check" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student_coterie">
+              <PropertyRef Name="Id_student_coterie" />
+            </Principal>
+            <Dependent Role="Student_Check">
+              <PropertyRef Name="Id_student_coterie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CirclesDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Class" EntityType="Self.Class" />
+          <EntitySet Name="Coterie" EntityType="Self.Coterie" />
+          <EntitySet Name="Coterie_employee" EntityType="Self.Coterie_employee" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="Student_Check" EntityType="Self.Student_Check" />
+          <EntitySet Name="Student_coterie" EntityType="Self.Student_coterie" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Class_Coterie" Association="Self.FK_Class_Coterie">
+            <End Role="Coterie" EntitySet="Coterie" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_Employee" Association="Self.FK_Class_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Class" EntitySet="Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Check_Class" Association="Self.FK_Student_Check_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Student_Check" EntitySet="Student_Check" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coterie_employee_Coterie" Association="Self.FK_Coterie_employee_Coterie">
+            <End Role="Coterie" EntitySet="Coterie" />
+            <End Role="Coterie_employee" EntitySet="Coterie_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_coterie_Coterie" Association="Self.FK_Student_coterie_Coterie">
+            <End Role="Coterie" EntitySet="Coterie" />
+            <End Role="Student_coterie" EntitySet="Student_coterie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Coterie_employee_Employee" Association="Self.FK_Coterie_employee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Coterie_employee" EntitySet="Coterie_employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Employee" Association="Self.FK_Users_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_coterie_Student" Association="Self.FK_Student_coterie_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Student_coterie" EntitySet="Student_coterie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Check_Student_coterie" Association="Self.FK_Student_Check_Student_coterie">
+            <End Role="Student_coterie" EntitySet="Student_coterie" />
+            <End Role="Student_Check" EntitySet="Student_Check" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CirclesDBModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CirclesDBModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CirclesDBModelContainer" CdmEntityContainer="CirclesDbEntities">
+          <EntitySetMapping Name="Class">
+            <EntityTypeMapping TypeName="CirclesDBModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="Id_class" ColumnName="Id_class" />
+                <ScalarProperty Name="Number_cabinet" ColumnName="Number_cabinet" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time_start" ColumnName="Time_start" />
+                <ScalarProperty Name="Time_end" ColumnName="Time_end" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+                <ScalarProperty Name="Id_coterie" ColumnName="Id_coterie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coterie">
+            <EntityTypeMapping TypeName="CirclesDBModel.Coterie">
+              <MappingFragment StoreEntitySet="Coterie">
+                <ScalarProperty Name="Id_Coterie" ColumnName="Id_Coterie" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Max_amount" ColumnName="Max_amount" />
+                <ScalarProperty Name="Hour_Amount" ColumnName="Hour_Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coterie_employee">
+            <EntityTypeMapping TypeName="CirclesDBModel.Coterie_employee">
+              <MappingFragment StoreEntitySet="Coterie_employee">
+                <ScalarProperty Name="Id_coterie_student" ColumnName="Id_coterie_student" />
+                <ScalarProperty Name="Id_coterie" ColumnName="Id_coterie" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="CirclesDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="CirclesDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id_role" ColumnName="Id_role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="CirclesDBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Id_student" ColumnName="Id_student" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Check">
+            <EntityTypeMapping TypeName="CirclesDBModel.Student_Check">
+              <MappingFragment StoreEntitySet="Student_Check">
+                <ScalarProperty Name="Id_student_scheck" ColumnName="Id_student_scheck" />
+                <ScalarProperty Name="Id_student_coterie" ColumnName="Id_student_coterie" />
+                <ScalarProperty Name="Id_class" ColumnName="Id_class" />
+                <ScalarProperty Name="IsAttended" ColumnName="IsAttended" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_coterie">
+            <EntityTypeMapping TypeName="CirclesDBModel.Student_coterie">
+              <MappingFragment StoreEntitySet="Student_coterie">
+                <ScalarProperty Name="Id_student_coterie" ColumnName="Id_student_coterie" />
+                <ScalarProperty Name="Id_student" ColumnName="Id_student" />
+                <ScalarProperty Name="id_coterie" ColumnName="id_coterie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CirclesDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CirclesDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id_Users" ColumnName="Id_Users" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Id_employee" ColumnName="Id_employee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище CirclesDBModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище CirclesDBModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище CirclesDBModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище CirclesDBModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CirclesDBModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище CirclesDBModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CirclesDBModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище CirclesDBModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище CirclesDBModel.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -16,15 +16,15 @@ using System.Windows.Shapes;
 
 namespace CirclesApp
 {
-	/// <summary>
-	/// Логика взаимодействия для MainPage.xaml
-	/// </summary>
-	public partial class MainPage : Page
-	{
-		string weekName;
-		DateTime dayDate;
-		public MainPage()
-		{
+    /// <summary>
+    /// Логика взаимодействия для DirectorMainPage.xaml
+    /// </summary>
+    public partial class DirectorMainPage : Page
+    {
+        string weekName;
+        DateTime dayDate;
+        public DirectorMainPage()
+        {
             dayDate = DateTime.Today.Date;
             InitializeComponent();
             RefreshDate();
@@ -63,7 +63,7 @@ namespace CirclesApp
                     else
                     {
                         FirstCircleCab.Content = "Нет";
-                        FirstCircleName.Content = "Нет";                    
+                        FirstCircleName.Content = "Нет";
                     }
                     var SecondCircele = ClassInDay.Where(x => x.Time_start == new DateTime(10, 10, 10, 16, 10, 0).TimeOfDay).FirstOrDefault();
                     if (SecondCircele != null)
@@ -101,3 +101,4 @@ namespace CirclesApp
         }
     }
 }
+

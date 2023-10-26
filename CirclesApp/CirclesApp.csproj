@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,26 +64,92 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CircleModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CircleModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CircleModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CircleModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CircleModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="CirclesPage.xaml.cs">
       <DependentUpon>CirclesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="CircleWindow.xaml.cs">
       <DependentUpon>CircleWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Class.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Coterie.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Coterie_employee.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbConectionClass.cs" />
+    <Compile Include="DirectorMainPage.xaml.cs">
+      <DependentUpon>DirectorMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DirectorWindow.xaml.cs">
+      <DependentUpon>DirectorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StudentsWindow.xaml.cs">
       <DependentUpon>StudentsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Student_Check.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Student_coterie.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TeacherWindow.xaml.cs">
       <DependentUpon>TeacherWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>CircleModel.tt</DependentUpon>
     </Compile>
     <Page Include="CirclesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CircleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DirectorMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DirectorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,6 +196,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="CircleModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CircleModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CircleModel.edmx.diagram">
+      <DependentUpon>CircleModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -218,6 +301,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="sefsfsef.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sadnovis.png" />
+    <Resource Include="ojsdjidjcod.png" />
+    <Resource Include="sdfsdfa.png" />
+    <Resource Include="asdasdas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CircleModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CircleModel.edmx</DependentUpon>
+      <LastGenOutput>CircleModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CircleModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CircleModel.edmx</DependentUpon>
+      <LastGenOutput>CircleModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
