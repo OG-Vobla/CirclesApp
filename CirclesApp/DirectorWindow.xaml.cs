@@ -32,7 +32,17 @@ namespace CirclesApp
 
         private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            DirectorWindowFrame.NavigationService.Navigate(new CirclesPage());
+            DirectorWindowFrame.NavigationService.Navigate(new EditCirclesPage());
+
+        }
+
+        private void Image_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void Image_MouseDown_3(object sender, MouseButtonEventArgs e)
+        {
+            DirectorWindowFrame.NavigationService.Navigate(new CircleTicherPage());
 
         }
     }

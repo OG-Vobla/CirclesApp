@@ -1,0 +1,24 @@
+﻿<Window x:Class="CirclesApp.SelectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CirclesApp"
+        mc:Ignorable="d"
+        Title="SelectWindow" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Image Source="/66_01_Floral_seamless_patternt_155 1.png" Stretch="Fill"/>
+        <Image Margin="0,-366,0,0" Height="80" Source="/hgfhfgh.png" Stretch="Fill"/>
+        <Label Height="60" Width="248" Margin="0,0,0,360" HorizontalAlignment="Center" FontSize="33" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Выбор кружка"></Label>
+
+        <ScrollViewer  Margin="0,90,0,0" Height="320" CanContentScroll="True">
+            <StackPanel x:Name="CirclesStack" >
+                <Grid Margin="0,10,0,0" x:Name="CircleGrid" >
+                    <Image Margin="0,0,0,0" Height="50" Width="600"  Source="/dfgdfgfd.png" Stretch="Fill"/>
+                    <Image Margin="0,0,-530,0" Height="40" Width="40" Source="/kabwbfkwwe.png" MouseDown="Image_MouseDown_2" />
+                    <Label Width="489" Margin="-80,0,0,0" FontSize="27" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

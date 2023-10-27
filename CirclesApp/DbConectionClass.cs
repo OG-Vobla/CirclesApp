@@ -10,5 +10,7 @@ namespace CirclesApp
     {
         static public CirclesDbEntities CirclesDBEntities = new CirclesDbEntities();
         static public Users user = new Users();
+        static public Employee selectedEmployee = null;
+        static public Coterie selectedCircle = null;
     }
 }

@@ -13,7 +13,8 @@
         <Image Margin="0,0,600,0"  Source="/Rectangle 2 (1).png" Stretch="Fill"/>
         <Image Margin="-10,0,650,350" Width="110" Height="35" Source="/Group 1.png" Stretch="Fill"/>
         <Image Margin="10,0,650,148" Source="/ojsdjidjcod.png" Stretch="Fill" Width="120" Height="29" MouseDown="Image_MouseDown_1"/>
+        <Image Margin="10,0,650,74" Source="/dfgfjhgjhgkas.png" Stretch="Fill" Width="120" Height="29" MouseDown="Image_MouseDown_3" />
         <Image Margin="10,0,650,224" Source="/Кнопка входа.png" Width="120" Height="29" Stretch="Fill" MouseDown="Image_MouseDown"/>
-     
+
     </Grid>
 </Window>

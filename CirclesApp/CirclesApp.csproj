@@ -82,11 +82,17 @@
     <Compile Include="CirclesPage.xaml.cs">
       <DependentUpon>CirclesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CircleTicherPage.xaml.cs">
+      <DependentUpon>CircleTicherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CircleWindow.xaml.cs">
       <DependentUpon>CircleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Class.cs">
       <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmationWindow.xaml.cs">
+      <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Coterie.cs">
       <DependentUpon>CircleModel.tt</DependentUpon>
@@ -101,6 +107,9 @@
     <Compile Include="DirectorWindow.xaml.cs">
       <DependentUpon>DirectorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditCirclesPage.xaml.cs">
+      <DependentUpon>EditCirclesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>CircleModel.tt</DependentUpon>
     </Compile>
@@ -110,6 +119,15 @@
     <Compile Include="Role.cs">
       <DependentUpon>CircleModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SeclectCircleWindow.xaml.cs">
+      <DependentUpon>SeclectCircleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectTicherWindow.xaml.cs">
+      <DependentUpon>SelectTicherWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SelectWindow.xaml.cs">
+      <DependentUpon>SelectWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>CircleModel.tt</DependentUpon>
     </Compile>
@@ -118,6 +136,9 @@
     </Compile>
     <Compile Include="Student.cs">
       <DependentUpon>CircleModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentsCheckWindow.xaml.cs">
+      <DependentUpon>StudentsCheckWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="StudentsWindow.xaml.cs">
       <DependentUpon>StudentsWindow.xaml</DependentUpon>
@@ -141,7 +162,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CircleTicherPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CircleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfirmationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DirectorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditCirclesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,6 +202,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SeclectCircleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectTicherWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentsCheckWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StudentsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -312,6 +361,18 @@
     <Resource Include="asdasdas.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="mfodmaosc.png" />
+    <Resource Include="dfgfjhgjhgkas.png" />
+    <Resource Include="sfgdfgdfgjhgk.png" />
+    <Resource Include="kghjghjf.png" />
+    <Resource Include="gdfgdf.png" />
+    <Resource Include="dsdghfghfhd.png" />
+    <Resource Include="sdjnsdism.png" />
+    <Resource Include="sdgsdsdnf.png" />
+    <Resource Include="dsfsydvfsdfbg.png" />
+    <Resource Include="sdkflsdfjkj.png" />
+    <Resource Include="sdgrgdrgr.png" />
+    <Resource Include="bjsvfjsef.png" />
     <Content Include="CircleModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CircleModel.edmx</DependentUpon>

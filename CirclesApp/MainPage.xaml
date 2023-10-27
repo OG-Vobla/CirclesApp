@@ -29,9 +29,9 @@
         <Label  x:Name="ThirdCircleCab" Width="189" Margin="0,305,-360,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
         <Image Margin="0,0,250,315" Width="30"  Height="30" Source="/asdasdas.png" Stretch="Fill" MouseDown="Image_MouseDown"/>
         <Image Margin="250,0,0,315" Width="30"  Height="30" Source="/sdfsdfa.png" Stretch="Fill" MouseDown="Image_MouseDown_1"/>
-        <Image Height="30" Width="80" Margin="466,0,0,-30" Source="/sadnovis.png" Stretch="Fill"/>
-        <Image Height="30" Width="80" Margin="466,0,0,-135" Source="/sadnovis.png" Stretch="Fill"/>
-        <Image Height="30" Width="80" Margin="466,0,0,-240" Source="/sadnovis.png" Stretch="Fill"/>
+        <Image Height="30" Width="80" Margin="466,0,0,-30" Source="/sadnovis.png" Stretch="Fill" MouseDown="Image_MouseDown_2"/>
+        <Image Height="30" Width="80" Margin="466,0,0,-135" Source="/sadnovis.png" Stretch="Fill" MouseDown="Image_MouseDown_3"/>
+        <Image Height="30" Width="80" Margin="466,0,0,-240" Source="/sadnovis.png" Stretch="Fill" MouseDown="Image_MouseDown_4"/>
 
     </Grid>
 </Page>

@@ -8,27 +8,38 @@
       d:DesignHeight="450" d:DesignWidth="642"
       Title="DirectorMainPage">
 
-    <Grid>
+    <Grid >
         <Image Source="/Group 2 (1).png" Width="800" Margin="-0,0,0,0"/>
         <Image Margin="0,95,0,15" Width="650" Height="350" Source="/Group 28.png" Stretch="Fill"/>
         <Image Margin="260,-315,0,0" Width="220" Height="39" Source="/asdfasfa.png" Stretch="Fill"/>
         <Image Margin="260,-195,0,0" Width="220" Height="39" Source="/asdfasfa.png" Stretch="Fill"/>
-        <Label x:Name="WeekDay" Width="218" Margin="290,81,0,0" HorizontalAlignment="Center" FontSize="27" Foreground="White" FontWeight="DemiBold"  Content="Понедельник"></Label>
-        <Label x:Name="DayDate" Width="148" Margin="220,21,0,0" HorizontalAlignment="Center" FontSize="27" Foreground="White" FontWeight="DemiBold"  Content="Понедельник"></Label>
+        <Image Margin="230,35,0,0" Width="140" Height="39" Source="/sdkflsdfjkj.png" Stretch="Fill" MouseDown="Image_MouseDown_3"/>
+        <Image Margin="230,140,0,0" Width="140" Height="39" Source="/sdkflsdfjkj.png" Stretch="Fill" MouseDown="Image_MouseDown_5"/>
+        <Image Margin="230,240,0,0" Width="140" Height="39" Source="/sdkflsdfjkj.png" Stretch="Fill" MouseDown="Image_MouseDown_6"/>
+        <Image  Margin="26,0,331,253" Height="39" Source="/asdfasfa.png" Stretch="Fill" MouseDown="Image_MouseDown_2"/>
+        <Label Height="50" x:Name="WeekDay" Width="218" Margin="290,-200,0,0" HorizontalAlignment="Center" FontSize="27" Foreground="White" FontWeight="DemiBold"  Content="Понедельник"></Label>
+        <Label x:Name="TischerName" Width="268" Height="40" Margin="38,-255,0,0" HorizontalAlignment="Left" FontSize="19" Foreground="White" FontWeight="DemiBold"  Content="Выбирете учителя" RenderTransformOrigin="0.534,0.185" MouseDown="TischerName_MouseDown"></Label>
+        <Label Height="40" x:Name="DayDate" Width="148" Margin="220,-325,0,0" HorizontalAlignment="Center" FontSize="27" Foreground="White" FontWeight="DemiBold"  Content="Понедельник"></Label>
         <Label Width="189" Margin="0,155,340,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Время"></Label>
         <Label Width="189" Margin="0,205,340,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="15:00-16:00"></Label>
         <Label Width="189" Margin="0,255,340,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="16:10-17:10"></Label>
         <Label Width="189" Margin="0,305,340,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="17:20-18:20"></Label>
-        <Label Width="189" Margin="0,155,-10,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
-        <Label x:Name="SecondCircleName" Width="188" Margin="0,255,-10,-100" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
-        <Label x:Name="ThirdCircleName"  Width="188" Margin="0,305,-10,-150" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
-        <Label x:Name="FirstCircleName"  Width="190" Margin="230,205,-10,-50" HorizontalAlignment="Left" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
+        <Label  Height="40" Width="189" Margin="0,-65,-10,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
+        <Label Height="40"  x:Name="SecondCircleName" Width="148" Margin="0,140,30,-0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
+        <Label Height="40" x:Name="ThirdCircleName"  Width="148" Margin="0,240,30,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
+        <Label Height="40" x:Name="FirstCircleName"  Width="148" Margin="230,-15,30,-50" HorizontalAlignment="Left" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
         <Label Width="189" Margin="0,155,-560,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Кабинет"></Label>
-        <Label x:Name="FirstCircleCab"  Width="189" Margin="0,205,-560,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
-        <Label  x:Name="SecondCircleCab" Width="189" Margin="0,255,-560,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
-        <Label  x:Name="ThirdCircleCab" Width="189" Margin="0,305,-560,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Нет"></Label>
+        <TextBox Height="40" x:Name="FirstCircleCab"  Width="39" Margin="0,40,-410,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Text="Нет" Background="{x:Null}" BorderBrush="{x:Null}"></TextBox>
+        <TextBox Height="40"  x:Name="SecondCircleCab" Width="39" Margin="0,145,-410,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Text="Нет" Background="{x:Null}" BorderBrush="{x:Null}"></TextBox>
+        <TextBox Height="40"  x:Name="ThirdCircleCab" Width="39" Margin="0,245,-410,0" HorizontalAlignment="Center" FontSize="20" Foreground="#4B4C4E" FontWeight="DemiBold"  Text="Нет" Background="{x:Null}" BorderBrush="{x:Null}"></TextBox>
         <Image Margin="260,0,250,315" Width="30"  Height="30" Source="/asdasdas.png" Stretch="Fill" MouseDown="Image_MouseDown"/>
         <Image Margin="510,0,0,315" Width="30"  Height="30" Source="/sdfsdfa.png" Stretch="Fill" MouseDown="Image_MouseDown_1"/>
+        <Image Margin="490,240,0,0" Width="29" Height="29" Source="/sdgsdsdnf.png" Stretch="Fill" MouseDown="Image_MouseDown_9"/>
+        <Image Margin="490,140,0,0" Width="29" Height="29" Source="/sdgsdsdnf.png" Stretch="Fill" MouseDown="Image_MouseDown_8"/>
+        <Image Margin="490,35,0,0" Width="29" Height="29" Source="/sdgsdsdnf.png" Stretch="Fill" MouseDown="Image_MouseDown_7"/>
+        <Image Margin="560,240,0,0" Width="29" Height="29" Source="/sdjnsdism.png" Stretch="Fill" MouseDown="Image_MouseDown_12" />
+        <Image Margin="560,140,0,0" Width="29" Height="29" Source="/sdjnsdism.png" Stretch="Fill" MouseDown="Image_MouseDown_11" />
+        <Image Margin="560,35,0,0" Width="29" Height="29" Source="/sdjnsdism.png" Stretch="Fill" MouseDown="Image_MouseDown_10" />
 
     </Grid>
 </Page>
