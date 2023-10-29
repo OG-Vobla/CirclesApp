@@ -20,5 +20,10 @@
                 </Grid>
             </StackPanel>
         </ScrollViewer>
+        <Grid Margin="0,-200,20,0" >
+            <Image Margin="0,0,0,0" Height="50" Width="600"  Source="/dfgdfgfd.png" Stretch="Fill"/>
+            <Image Margin="0,0,-530,0" Height="40" Width="40" Source="/dhfbsjdfjsdfsldv.png" Stretch="Fill" MouseDown="Image_MouseDown_2" />
+            <TextBox x:Name="SearchText" Height="40"  Margin="0,0,95,10" Width="457" HorizontalAlignment="Center" FontSize="27" Foreground="#4B4C4E" FontWeight="DemiBold"  Text="Поиск" TextChanged="SearchText_TextChanged" BorderBrush="{x:Null}"/>
+        </Grid>
     </Grid>
 </Window>

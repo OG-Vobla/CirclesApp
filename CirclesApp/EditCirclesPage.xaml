@@ -16,7 +16,8 @@
                 <Grid Margin="0,10,0,0" x:Name="CircleGrid" Visibility="Hidden">
                     <Image Margin="0,0,0,0" Height="50" Width="600"  Source="/dfgdfgfd.png" Stretch="Fill"/>
                     <Image Margin="0,0,-530,0" Height="40" Width="40" Source="/dsdghfghfhd.png" MouseDown="Image_MouseDown"/>
-                    <Label Width="489" Margin="-80,0,0,0" FontSize="27" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"></Label>
+                    <Image Margin="0,0,-330,0" Height="40" Width="130" Source="/lsdmdompsd.png" MouseDown="Image_MouseDown"/>
+                    <Label Margin="28,0,248,0" FontSize="27" Foreground="#4B4C4E" FontWeight="DemiBold"  Content="Название"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

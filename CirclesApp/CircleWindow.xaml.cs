@@ -171,5 +171,10 @@ namespace CirclesApp
             }
             ShowCircles();
         }
+
+        private void Image_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

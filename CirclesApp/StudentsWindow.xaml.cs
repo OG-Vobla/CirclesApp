@@ -78,23 +78,59 @@ namespace CirclesApp
         }
         private void ShowCircles()
         {
-
-            var students = DbConectionClass.CirclesDBEntities.Student.Where(x => DbConectionClass.CirclesDBEntities.Student_coterie.Where(i => x.Id_student == i.Id_student && i.Coterie.Name == circleName).FirstOrDefault() == null).ToList();
-            if (students.Count() != 0)
+            while (CirclesStack.Children.Count != 1)
             {
-                foreach (var i in students) 
-                {
+                CirclesStack.Children.RemoveAt(1);
+            }
+            if (SearchText.Text != "" && SearchText.Text != "Поиск")
+            {
+                var employesCircles = DbConectionClass.CirclesDBEntities.Student.Where(x => (x.Name + " " + x.MiddleName + " " + x.Surname).Contains(SearchText.Text.ToString()) && DbConectionClass.CirclesDBEntities.Student_coterie.Where(u => u.Coterie.Name == circleName && u.Id_student == x.Id_student).FirstOrDefault() == null).ToList();
 
-                    Grid clonedCanvas = new Grid();
-                    clonedCanvas.Margin = CircleGrid.Margin;
-                    clonedCanvas.Width = CircleGrid.Width;
-                    clonedCanvas.Height = CircleGrid.Height;
-                    foreach (UIElement element in CircleGrid.Children)
+                if (employesCircles.Count() != 0)
+                {
+                    foreach (var i in employesCircles)
                     {
-                        UIElement clonedElement = CloneElement(element, i.Name + " " + i.MiddleName + " " + i.Surname);
-                        clonedCanvas.Children.Add(clonedElement);
+                        Grid clonedCanvas = new Grid();
+                        clonedCanvas.Margin = CircleGrid.Margin;
+                        clonedCanvas.Width = CircleGrid.Width;
+                        clonedCanvas.Height = CircleGrid.Height;
+                        foreach (UIElement element in CircleGrid.Children)
+                        {
+                            UIElement clonedElement = CloneElement(element, i.Name + " " + i.MiddleName + " " + i.Surname);
+                            clonedCanvas.Children.Add(clonedElement);
+                        }
+                        CirclesStack.Children.Add(clonedCanvas);
                     }
-                    CirclesStack.Children.Add(clonedCanvas);
+                }
+            }
+            else
+            {
+                var employesCircles = DbConectionClass.CirclesDBEntities.Student.Where(x => DbConectionClass.CirclesDBEntities.Student_coterie.Where(u => u.Coterie.Name == circleName && u.Id_student == x.Id_student).FirstOrDefault() == null).ToList();
+                if (employesCircles.Count() != 0)
+                {
+                    foreach (var i in employesCircles)
+                    {
+                        Grid clonedCanvas = new Grid();
+                        clonedCanvas.Margin = CircleGrid.Margin;
+                        clonedCanvas.Width = CircleGrid.Width;
+                        clonedCanvas.Height = CircleGrid.Height;
+                        foreach (UIElement element in CircleGrid.Children)
+                        {
+                            double t = 0;
+                            var a = DbConectionClass.CirclesDBEntities.Student_Check.Where(x => x.Id_student_coterie == DbConectionClass.CirclesDBEntities.Student_coterie.Where(y => y.Id_student == i.Id_student).FirstOrDefault().Id_student_coterie);
+                            foreach (var l in a)
+                            {
+                                if (l.IsAttended == 1)
+                                {
+                                    t++;
+                                }
+                            }
+                            
+                                UIElement clonedElement = CloneElement(element, i.Name + " " + i.MiddleName + " " + i.Surname + " ");
+                            clonedCanvas.Children.Add(clonedElement);
+                        }
+                        CirclesStack.Children.Add(clonedCanvas);
+                    }
                 }
             }
         }
@@ -169,6 +205,22 @@ namespace CirclesApp
 
             // Если тип элемента не поддерживается, верните null или бросьте исключение
             return null;
+        }
+
+        private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            ShowCircles();
+
+        }
+
+        private void Image_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+            ShowCircles();
+        }
+
+        private void SearchText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ShowCircles();
         }
     }
 }

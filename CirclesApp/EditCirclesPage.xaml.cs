@@ -67,24 +67,33 @@ namespace CirclesApp
                 CirclesStack.Children.RemoveAt(1);
             }
             
-                var employesCircles = DbConectionClass.CirclesDBEntities.Coterie;
-                if (employesCircles.Count() != 0)
+            var employesCircles = DbConectionClass.CirclesDBEntities.Coterie;
+            if (employesCircles.Count() != 0)
+            {
+                foreach (var i in employesCircles)
                 {
-                    foreach (var i in employesCircles)
-                    {
 
-                        Grid clonedCanvas = new Grid();
-                        clonedCanvas.Margin = CircleGrid.Margin;
-                        clonedCanvas.Width = CircleGrid.Width;
-                        clonedCanvas.Height = CircleGrid.Height;
-                        foreach (UIElement element in CircleGrid.Children)
+                    Grid clonedCanvas = new Grid();
+                    clonedCanvas.Margin = CircleGrid.Margin;
+                    clonedCanvas.Width = CircleGrid.Width;
+                    clonedCanvas.Height = CircleGrid.Height;
+                    foreach (UIElement element in CircleGrid.Children)
+                    {
+                        double t = 0;
+                        var a = DbConectionClass.CirclesDBEntities.Student_Check.Where(x => x.Student_coterie.Coterie.Name == i.Name);
+                        foreach (var l in a)
                         {
-                            UIElement clonedElement = CloneElement(element, i.Name);
-                            clonedCanvas.Children.Add(clonedElement);
+                            if (l.IsAttended == 1)
+                            {
+                                t++;
+                            }
                         }
-                        CirclesStack.Children.Add(clonedCanvas);
+                        UIElement clonedElement = CloneElement(element, i.Name+ " " + (a.Count() != 0 && t != 0 ? Convert.ToInt32(t / a.Count() * 100) : 100) + "%") ;
+                        clonedCanvas.Children.Add(clonedElement);
                     }
+                    CirclesStack.Children.Add(clonedCanvas);
                 }
+            }
             
         }
         private UIElement CloneElement(UIElement element, string CircleName)
@@ -132,7 +141,10 @@ namespace CirclesApp
                 {
                     clonedTextBlock.MouseDown += Image_MouseDown;
                 }
-
+                if (originalTextBlock.Source.ToString() == "pack://application:,,,/lsdmdompsd.png")
+                {
+                    clonedTextBlock.MouseDown += Image_MouseDown1;
+                }
 
                 // Копирование других свойств, если необходимо
 
@@ -203,6 +215,16 @@ namespace CirclesApp
                 {
 
                 }
+            }
+        }
+            private void Image_MouseDown1(object sender, MouseButtonEventArgs e)
+        {
+            Grid circleGrid = FindParentGrid(sender as DependencyObject);
+            if (circleGrid != null)
+            {
+                System.Windows.Controls.Label label = FindChildLabel(circleGrid);
+                CircleWindow circleWindow =new CircleWindow(label.Content.ToString());
+                circleWindow.ShowDialog();
             }
         }
     }

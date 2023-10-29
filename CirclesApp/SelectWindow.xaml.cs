@@ -71,23 +71,46 @@ namespace CirclesApp
         }
         private void ShowCircles()
         {
-
-            var students = DbConectionClass.CirclesDBEntities.Coterie_employee.Where(x => x.Employee.Id_employee == DbConectionClass.selectedEmployee.Id_employee);
-            if (students != null)
+            if (DbConectionClass.selectedEmployee == null)
             {
-                foreach (var i in students)
+                var students = DbConectionClass.CirclesDBEntities.Coterie;
+                if (students != null)
                 {
-
-                    Grid clonedCanvas = new Grid();
-                    clonedCanvas.Margin = CircleGrid.Margin;
-                    clonedCanvas.Width = CircleGrid.Width;
-                    clonedCanvas.Height = CircleGrid.Height;
-                    foreach (UIElement element in CircleGrid.Children)
+                    foreach (var i in students)
                     {
-                        UIElement clonedElement = CloneElement(element, i.Coterie.Name);
-                        clonedCanvas.Children.Add(clonedElement);
+
+                        Grid clonedCanvas = new Grid();
+                        clonedCanvas.Margin = CircleGrid.Margin;
+                        clonedCanvas.Width = CircleGrid.Width;
+                        clonedCanvas.Height = CircleGrid.Height;
+                        foreach (UIElement element in CircleGrid.Children)
+                        {
+                            UIElement clonedElement = CloneElement(element, i.Name);
+                            clonedCanvas.Children.Add(clonedElement);
+                        }
+                        CirclesStack.Children.Add(clonedCanvas);
                     }
-                    CirclesStack.Children.Add(clonedCanvas);
+                }
+            }
+            else
+            {
+                var students = DbConectionClass.CirclesDBEntities.Coterie_employee.Where(x => x.Employee.Id_employee == DbConectionClass.selectedEmployee.Id_employee);
+                if (students != null)
+                {
+                    foreach (var i in students)
+                    {
+
+                        Grid clonedCanvas = new Grid();
+                        clonedCanvas.Margin = CircleGrid.Margin;
+                        clonedCanvas.Width = CircleGrid.Width;
+                        clonedCanvas.Height = CircleGrid.Height;
+                        foreach (UIElement element in CircleGrid.Children)
+                        {
+                            UIElement clonedElement = CloneElement(element, i.Coterie.Name);
+                            clonedCanvas.Children.Add(clonedElement);
+                        }
+                        CirclesStack.Children.Add(clonedCanvas);
+                    }
                 }
             }
         }

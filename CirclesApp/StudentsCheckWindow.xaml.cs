@@ -39,25 +39,29 @@ namespace CirclesApp
             if (circleGrid != null)
             {
                 Label label = FindChildLabel(circleGrid);
-                if ((sender as Image).Source.ToString() == "pack://application:,,,/sdgrgdrgr.png")
+                if (selectedDate.Date == DateTime.Today)
                 {
-                    DbConectionClass.CirclesDBEntities.Student_Check.Remove(DbConectionClass.CirclesDBEntities.Student_Check.Where(x => x.Class.Coterie.Name == circleName && x.Class.Date == selectedDate.Date && x.Student_coterie.Student.Name + " " + x.Student_coterie.Student.MiddleName + " " + x.Student_coterie.Student.Surname == label.Content).FirstOrDefault());
-                    DbConectionClass.CirclesDBEntities.Student_Check.Add(new Student_Check()
+
+                    if ((sender as Image).Source.ToString() == "pack://application:,,,/sdgrgdrgr.png")
                     {
-                        Id_student_coterie = DbConectionClass.CirclesDBEntities.Student_coterie.Where(x => x.Student.Name + " " + x.Student.MiddleName + " " + x.Student.Surname == label.Content && x.Coterie.Name == circleName).FirstOrDefault().Id_student_coterie,
-                        Id_class = selectedDate.Id_class,
-                        IsAttended = 1
-                    });
-                }
-                else 
-                {
-                    DbConectionClass.CirclesDBEntities.Student_Check.Remove(DbConectionClass.CirclesDBEntities.Student_Check.Where(x => x.Class.Coterie.Name == circleName && x.Class.Date == selectedDate.Date && x.Student_coterie.Student.Name + " " + x.Student_coterie.Student.MiddleName + " " + x.Student_coterie.Student.Surname == label.Content).FirstOrDefault());
-                    DbConectionClass.CirclesDBEntities.Student_Check.Add(new Student_Check()
+                        DbConectionClass.CirclesDBEntities.Student_Check.Remove(DbConectionClass.CirclesDBEntities.Student_Check.Where(x => x.Class.Coterie.Name == circleName && x.Class.Date == selectedDate.Date && x.Student_coterie.Student.Name + " " + x.Student_coterie.Student.MiddleName + " " + x.Student_coterie.Student.Surname == label.Content).FirstOrDefault());
+                        DbConectionClass.CirclesDBEntities.Student_Check.Add(new Student_Check()
+                        {
+                            Id_student_coterie = DbConectionClass.CirclesDBEntities.Student_coterie.Where(x => x.Student.Name + " " + x.Student.MiddleName + " " + x.Student.Surname == label.Content && x.Coterie.Name == circleName).FirstOrDefault().Id_student_coterie,
+                            Id_class = selectedDate.Id_class,
+                            IsAttended = 1
+                        });
+                    }
+                    else 
                     {
-                        Id_student_coterie = DbConectionClass.CirclesDBEntities.Student_coterie.Where(x => x.Student.Name + " " + x.Student.MiddleName + " " + x.Student.Surname == label.Content && x.Coterie.Name == circleName).FirstOrDefault().Id_student_coterie,
-                        Id_class = selectedDate.Id_class,
-                        IsAttended = 0
-                    });
+                        DbConectionClass.CirclesDBEntities.Student_Check.Remove(DbConectionClass.CirclesDBEntities.Student_Check.Where(x => x.Class.Coterie.Name == circleName && x.Class.Date == selectedDate.Date && x.Student_coterie.Student.Name + " " + x.Student_coterie.Student.MiddleName + " " + x.Student_coterie.Student.Surname == label.Content).FirstOrDefault());
+                        DbConectionClass.CirclesDBEntities.Student_Check.Add(new Student_Check()
+                        {
+                            Id_student_coterie = DbConectionClass.CirclesDBEntities.Student_coterie.Where(x => x.Student.Name + " " + x.Student.MiddleName + " " + x.Student.Surname == label.Content && x.Coterie.Name == circleName).FirstOrDefault().Id_student_coterie,
+                            Id_class = selectedDate.Id_class,
+                            IsAttended = 0
+                        });
+                    }
                 }
                 DbConectionClass.CirclesDBEntities.SaveChanges();
                 while (CirclesStack.Children.Count != 1)

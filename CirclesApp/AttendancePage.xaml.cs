@@ -17,14 +17,14 @@ using System.Windows.Shapes;
 namespace CirclesApp
 {
     /// <summary>
-    /// Логика взаимодействия для DirectorMainPage.xaml
+    /// Логика взаимодействия для AttendancePage.xaml
     /// </summary>
-    public partial class DirectorMainPage : Page
+    public partial class AttendancePage : Page
     {
         string weekName;
         Employee tischerName;
         DateTime dayDate;
-        public DirectorMainPage()
+        public AttendancePage()
         {
             tischerName = null;
             dayDate = DateTime.Today.Date;
@@ -63,71 +63,90 @@ namespace CirclesApp
                         var FirstCircele = ClassInDay.Where(x => x.Time_start == new DateTime(10, 10, 10, 15, 0, 0).TimeOfDay).FirstOrDefault();
                         if (FirstCircele != null)
                         {
-                            FirstCircleCab.Text = FirstCircele.Number_cabinet.ToString();
+                            FirstCircleCab.Content = FirstCircele.Number_cabinet.ToString();
                             FirstCircleName.Content = FirstCircele.Coterie.Name;
                         }
                         else
                         {
-                            FirstCircleCab.Text = "Нет";
+                            FirstCircleCab.Content = "Нет";
                             FirstCircleName.Content = "Нет";
                         }
                         var SecondCircele = ClassInDay.Where(x => x.Time_start == new DateTime(10, 10, 10, 16, 10, 0).TimeOfDay).FirstOrDefault();
                         if (SecondCircele != null)
                         {
-                            SecondCircleCab.Text = SecondCircele.Number_cabinet.ToString();
+                            SecondCircleCab.Content = SecondCircele.Number_cabinet.ToString();
                             SecondCircleName.Content = SecondCircele.Coterie.Name;
                         }
                         else
                         {
-                            SecondCircleCab.Text = "Нет";
+                            SecondCircleCab.Content = "Нет";
                             SecondCircleName.Content = "Нет";
                         }
                         var ThirdCircele = ClassInDay.Where(x => x.Time_start == new DateTime(10, 10, 10, 17, 20, 0).TimeOfDay).FirstOrDefault();
                         if (ThirdCircele != null)
                         {
-                            ThirdCircleCab.Text = ThirdCircele.Number_cabinet.ToString();
+                            ThirdCircleCab.Content = ThirdCircele.Number_cabinet.ToString();
                             ThirdCircleName.Content = ThirdCircele.Coterie.Name;
                         }
                         else
                         {
-                            ThirdCircleCab.Text = "Нет";
+                            ThirdCircleCab.Content = "Нет";
                             ThirdCircleName.Content = "Нет";
                         }
                     }
                     else
                     {
-                        FirstCircleCab.Text = "Нет";
+                        FirstCircleCab.Content = "Нет";
                         FirstCircleName.Content = "Нет";
-                        SecondCircleCab.Text = "Нет";
+                        SecondCircleCab.Content = "Нет";
                         SecondCircleName.Content = "Нет";
-                        ThirdCircleCab.Text = "Нет";
+                        ThirdCircleCab.Content = "Нет";
                         ThirdCircleName.Content = "Нет";
                     }
                 }
-
-                else
-                {
-                    FirstCircleCab.Text = "Нет";
-                    FirstCircleName.Content = "Нет";
-                    SecondCircleCab.Text = "Нет";
-                    SecondCircleName.Content = "Нет";
-                    ThirdCircleCab.Text = "Нет";
-                    ThirdCircleName.Content = "Нет";
-                }
+            }
+            else
+            {
+                FirstCircleCab.Content = "Нет";
+                FirstCircleName.Content = "Нет";
+                SecondCircleCab.Content = "Нет";
+                SecondCircleName.Content = "Нет";
+                ThirdCircleCab.Content = "Нет";
+                ThirdCircleName.Content = "Нет";
             }
         }
+
         private void TischerName_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SelectTicherWindow selectTicherWindow = new SelectTicherWindow();
             selectTicherWindow.ShowDialog();
             RefreshDate();
         }
-
         private void Image_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
-            SelectTicherWindow selectTicherWindow = new SelectTicherWindow();
-            selectTicherWindow.ShowDialog();
-            RefreshDate();
+            if (DbConectionClass.selectedEmployee !=null)
+            {
+
+                var ClassList = DbConectionClass.CirclesDBEntities.Class.Where(x => x.Employee.Id_employee == DbConectionClass.selectedEmployee.Id_employee).ToList();
+                if (ClassList != null)
+                {
+
+                    StudentsCheckWindow studentsCheckWindow = null;
+                    if (ClassList.Count() != 0)
+                    {
+                        var ClassInDay = ClassList.Where(x => x.Date == dayDate).ToList();
+                        if (ClassInDay.Count() != 0)
+                        {
+                            var FirstCircele = ClassInDay.Where(x => x.Time_start == new DateTime(10, 10, 10, 15, 0, 0).TimeOfDay).FirstOrDefault();
+                            if (FirstCircele != null)
+                            {
+                                studentsCheckWindow = new StudentsCheckWindow(FirstCircele.Coterie.Name, FirstCircele);
+                                studentsCheckWindow.ShowDialog();
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void Image_MouseDown_3(object sender, MouseButtonEventArgs e)
@@ -135,25 +154,53 @@ namespace CirclesApp
             if (DbConectionClass.selectedEmployee != null)
             {
 
-                DbConectionClass.selectedCircle = null;
-                SelectWindow selectTicherWindow = new SelectWindow();
-                selectTicherWindow.ShowDialog();
-                if (DbConectionClass.selectedCircle != null)
+                var ClassList = DbConectionClass.CirclesDBEntities.Class.Where(x => x.Employee.Id_employee == DbConectionClass.selectedEmployee.Id_employee).ToList();
+                StudentsCheckWindow studentsCheckWindow = null;
+                if (ClassList.Count() != 0)
                 {
+                    var ClassInDay = ClassList.Where(x => x.Date == dayDate).ToList();
+                    if (ClassInDay.Count() != 0)
+                    {
 
-                FirstCircleName.Content = DbConectionClass.selectedCircle.Name;
-                }
-                else
-                {
-                    FirstCircleName.Content = "Нет";
+                        var SecondCircele = ClassInDay.Where(x => x.Time_start == new DateTime(10, 10, 10, 16, 10, 0).TimeOfDay).FirstOrDefault();
+                        if (SecondCircele != null)
+                        {
+                            studentsCheckWindow = new StudentsCheckWindow(SecondCircele.Coterie.Name, SecondCircele);
+
+                            studentsCheckWindow.ShowDialog();
+                        }
+                    }
                 }
             }
         }
 
         private void Image_MouseDown_4(object sender, MouseButtonEventArgs e)
         {
+            if (DbConectionClass.selectedEmployee != null)
+            {
 
+                var ClassList = DbConectionClass.CirclesDBEntities.Class.Where(x => x.Employee.Id_employee == DbConectionClass.selectedEmployee.Id_employee).ToList();
+                StudentsCheckWindow studentsCheckWindow = null;
+                if (ClassList.Count() != 0)
+                {
+                    var ClassInDay = ClassList.Where(x => x.Date == dayDate).ToList();
+                    if (ClassInDay.Count() != 0)
+                    {
+
+                        var ThirdCircele = ClassInDay.Where(x => x.Time_start == new DateTime(10, 10, 10, 17, 20, 0).TimeOfDay).FirstOrDefault();
+                        if (ThirdCircele != null)
+                        {
+                            studentsCheckWindow = new StudentsCheckWindow(ThirdCircele.Coterie.Name, ThirdCircele);
+                            studentsCheckWindow.ShowDialog();
+
+                        }
+                    }
+                }
+            }
         }
+    
+
+
 
         private void Image_MouseDown_5(object sender, MouseButtonEventArgs e)
         {
@@ -196,14 +243,18 @@ namespace CirclesApp
         private void Image_MouseDown_7(object sender, MouseButtonEventArgs e)
         {
             int i = 0;
-            if (FirstCircleName.Content != "Нет" && Int32.TryParse(FirstCircleCab.Text,out i) )
+            if (FirstCircleName.Content != "Нет" && Int32.TryParse(FirstCircleCab.Content.ToString(), out i))
             {
-                DbConectionClass.CirclesDBEntities.Class.Add(new Class() {Id_coterie = DbConectionClass.CirclesDBEntities.Coterie.Where(x=> 
-                x.Name == FirstCircleName.Content).FirstOrDefault().Id_Coterie, 
-                    Id_employee = tischerName.Id_employee, 
-                    Date = dayDate, Number_cabinet = i, 
-                    Time_start = new TimeSpan(15,0,0), 
-                    Time_end = new TimeSpan(16, 0, 0) });
+                DbConectionClass.CirclesDBEntities.Class.Add(new Class()
+                {
+                    Id_coterie = DbConectionClass.CirclesDBEntities.Coterie.Where(x =>
+                x.Name == FirstCircleName.Content).FirstOrDefault().Id_Coterie,
+                    Id_employee = tischerName.Id_employee,
+                    Date = dayDate,
+                    Number_cabinet = i,
+                    Time_start = new TimeSpan(15, 0, 0),
+                    Time_end = new TimeSpan(16, 0, 0)
+                });
                 DbConectionClass.CirclesDBEntities.SaveChanges();
             }
 
@@ -212,7 +263,7 @@ namespace CirclesApp
         private void Image_MouseDown_8(object sender, MouseButtonEventArgs e)
         {
             int i = 0;
-            if (SecondCircleName.Content != "Нет" && Int32.TryParse(SecondCircleCab.Text, out i))
+            if (SecondCircleName.Content != "Нет" && Int32.TryParse(SecondCircleCab.Content.ToString(), out i))
             {
                 DbConectionClass.CirclesDBEntities.Class.Add(new Class() { Id_coterie = DbConectionClass.CirclesDBEntities.Coterie.Where(x => x.Name == SecondCircleName.Content).FirstOrDefault().Id_Coterie, Id_employee = tischerName.Id_employee, Date = dayDate, Number_cabinet = i, Time_start = new TimeSpan(16, 10, 0), Time_end = new TimeSpan(17, 10, 0) });
                 DbConectionClass.CirclesDBEntities.SaveChanges();
@@ -223,7 +274,7 @@ namespace CirclesApp
         private void Image_MouseDown_9(object sender, MouseButtonEventArgs e)
         {
             int i = 0;
-            if (ThirdCircleName.Content != "Нет" && Int32.TryParse(ThirdCircleCab.Text, out i))
+            if (ThirdCircleName.Content != "Нет" && Int32.TryParse(ThirdCircleCab.Content.ToString(), out i))
             {
                 DbConectionClass.CirclesDBEntities.Class.Add(new Class() { Id_coterie = DbConectionClass.CirclesDBEntities.Coterie.Where(x => x.Name == ThirdCircleName.Content).FirstOrDefault().Id_Coterie, Id_employee = tischerName.Id_employee, Date = dayDate, Number_cabinet = i, Time_start = new TimeSpan(17, 20, 0), Time_end = new TimeSpan(18, 20, 0) });
                 DbConectionClass.CirclesDBEntities.SaveChanges();
@@ -233,7 +284,7 @@ namespace CirclesApp
         private void Image_MouseDown_10(object sender, MouseButtonEventArgs e)
         {
             int i = 0;
-            if (FirstCircleName.Content != "Нет" && Int32.TryParse(FirstCircleCab.Text, out i) && DbConectionClass.selectedEmployee != null)
+            if (FirstCircleName.Content != "Нет" && Int32.TryParse(FirstCircleCab.Content.ToString(), out i) && DbConectionClass.selectedEmployee != null)
             {
                 var s = DbConectionClass.CirclesDBEntities.Class.Where(x =>
                 x.Id_coterie == DbConectionClass.CirclesDBEntities.Coterie.Where(a => a.Name == FirstCircleName.Content).FirstOrDefault().Id_Coterie
@@ -256,7 +307,7 @@ namespace CirclesApp
         private void Image_MouseDown_11(object sender, MouseButtonEventArgs e)
         {
             int i = 0;
-            if (SecondCircleName.Content != "Нет" && Int32.TryParse(SecondCircleCab.Text, out i) && DbConectionClass.selectedEmployee != null)
+            if (SecondCircleName.Content != "Нет" && Int32.TryParse(SecondCircleCab.Content.ToString(), out i) && DbConectionClass.selectedEmployee != null)
             {
 
                 var s = DbConectionClass.CirclesDBEntities.Class.Remove(DbConectionClass.CirclesDBEntities.Class.Where(x =>
@@ -279,7 +330,7 @@ namespace CirclesApp
         private void Image_MouseDown_12(object sender, MouseButtonEventArgs e)
         {
             int i = 0;
-            if (ThirdCircleName.Content != "Нет" && Int32.TryParse(ThirdCircleCab.Text, out i) && DbConectionClass.selectedEmployee != null)
+            if (ThirdCircleName.Content != "Нет" && Int32.TryParse(ThirdCircleCab.Content.ToString(), out i) && DbConectionClass.selectedEmployee != null)
             {
 
                 var s = DbConectionClass.CirclesDBEntities.Class.Remove(DbConectionClass.CirclesDBEntities.Class.Where(x =>
@@ -301,4 +352,3 @@ namespace CirclesApp
         }
     }
 }
-

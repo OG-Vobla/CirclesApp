@@ -45,5 +45,17 @@ namespace CirclesApp
             DirectorWindowFrame.NavigationService.Navigate(new CircleTicherPage());
 
         }
+
+        private void Image_MouseDown_4(object sender, MouseButtonEventArgs e)
+        {
+            DirectorWindowFrame.NavigationService.Navigate(new AttendancePage());
+
+        }
+
+        private void Image_MouseDown_5(object sender, MouseButtonEventArgs e)
+        {
+            DirectorWindowFrame.NavigationService.Navigate(new StudentsAttPage());
+
+        }
     }
 }
